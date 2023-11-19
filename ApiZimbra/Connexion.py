@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 from datetime import datetime, timedelta
-
+from Cours import Cours
 
 class Connexion:    
     def __init__(self, login, password, mailAdress):
@@ -13,6 +13,7 @@ class Connexion:
         self.password = password
         self.url = f'{self.zimbra_server}/home/{self.email_address}/Inbox/?fmt=sync&auth=sc'
 
+        
     
     def getJsessionID(self):
         login_data = {
@@ -67,11 +68,11 @@ class Connexion:
             
             heure_cours_precedent = heure_cours
         
-            info_cours = sujet_cours
+            info_cours = Cours(emplacement_cours, sujet_cours, heure_cours)
         
             liste_cours.append(info_cours)
         
         return liste_cours
-
-
+    
+    
 
