@@ -8,6 +8,7 @@ zimbra_server = 'https://iut-dijon.u-bourgogne.fr'
 email_address = 'el-mehdi.bouabdalli@iut-dijon.u-bourgogne.fr'
 
 
+
 class Cours:
     def __init__(self, emplacement, sujet, heure, jour):
         self.emplacement = emplacement
@@ -88,4 +89,4 @@ def getCalendar(login, mdp):
 
 
 
-                
+
