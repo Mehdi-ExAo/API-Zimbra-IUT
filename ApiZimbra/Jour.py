@@ -1,4 +1,4 @@
-from Cour import *
+from Cours import *
 
 class Jour:
     def __init__(self, Cours : List[Cour], libelle: str, numJour: int):
@@ -17,7 +17,7 @@ class Jour:
         """
         return self.Cours
         
-    def GetCoursParHeure(self, heure: float) -> Cour or None:
+    def GetCoursParHeure(self, heure: float) -> Cours or None:
         """
        Récupère un cours en fonction de l'heure.
 
