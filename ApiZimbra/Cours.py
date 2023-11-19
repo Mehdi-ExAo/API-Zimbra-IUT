@@ -11,7 +11,7 @@ class Cours:
         """
         # Attributs de la classe
         self.emplacement = emplacement
-        self.sujet = sujets
+        self.sujet = sujet
         self.heure = heure
 
     def __str__(self):

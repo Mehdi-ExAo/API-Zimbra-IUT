@@ -64,3 +64,4 @@ class Semaine:
         for jour in self.jours:
             semaine_str += str(jour) + "\n"
         return semaine_str
+
