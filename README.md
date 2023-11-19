@@ -39,3 +39,4 @@ liste_cours = getCalendar(login, mdp)
 for cours in liste_cours:
     print(cours)
 ```
+![alt text](https://i.imgur.com/ewmWJwD.png)
