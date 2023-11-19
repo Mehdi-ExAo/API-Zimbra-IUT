@@ -13,8 +13,7 @@ class Connexion:
         self.password = password
         self.url = f'{self.zimbra_server}/home/{self.email_address}/Inbox/?fmt=sync&auth=sc'
 
-        
-    
+
     def getJsessionID(self):
         login_data = {
                 "loginOp": "login",
