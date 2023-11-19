@@ -8,17 +8,6 @@ Ce script Python offre des fonctionnalités pour extraire les informations du ca
 - Bibliothèque `requests` (à installer avec `pip install requests`)
 - Bibliothèque `BeautifulSoup` (à installer avec `pip install beautifulsoup4`)
 
-## Exemple
-```python
-login = "votre_nom_utilisateur"
-mdp = "votre_mot_de_passe"
-
-liste_cours = getCalendar(login, mdp)
-
-for cours in liste_cours:
-    print(cours)
-
-```
 # Documentation
 
 ## Récupération du JsessionID
