@@ -22,7 +22,7 @@ for cours in liste_cours:
 # Documentation
 
 ## Récupération du JsessionID
-LegetJsessionID prend en charge l'authentification. Elle utilise les identifiants fournis pour établir une session et retourne la valeur du cookie JSESSIONID, essentiel pour les requêtes.
+Le getJsessionID prend en charge l'authentification. Elle utilise les identifiants fournis pour établir une session et retourne la valeur du cookie JSESSIONID, essentiel pour les requêtes.
 ```python
 login = "votre_nom_utilisateur"
 mdp = "votre_mot_de_passe"
