@@ -3,6 +3,8 @@ from bs4 import BeautifulSoup
 from datetime import datetime, timedelta
 from Cours import Cours
 from Jour import Jour
+from Semaine import Semaine
+from Calendrier import Calendrier
 
 class Connexion:    
     def __init__(self, login, password, mailAdress):
@@ -47,11 +49,13 @@ class Connexion:
         
         
         liste_cours = []
-        caledrier = []
+        jours = []
+        semaine = []
         
         jours_semaine = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"]
         
         index_jour_actuel = 0
+        index_semaine = 0
         
         
         for day in zh_app_content_elements:
@@ -72,22 +76,24 @@ class Connexion:
 
 
             jour = Jour(liste_cours, jours_semaine[index_jour_actuel], index_jour_actuel)
-            caledrier.append(jour)
+            jours.append(jour)
+            
+            if index_jour_actuel == 4:
+                semaine.append(Semaine(index_semaine, jours))
+                jours = []
+                index_semaine += 1
+            
             index_jour_actuel += 1
 
-        return caledrier
+                
+
+        return Calendrier(semaine)
     
     
     
     
     
-    
-    
-    
-    
-    
-    
-    
+
     
     
     

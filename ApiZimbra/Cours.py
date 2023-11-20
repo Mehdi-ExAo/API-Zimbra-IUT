@@ -21,4 +21,4 @@ class Cours:
         Returns:
             str: Une chaîne représentant les détails du cours.
         """
-        return f"{self.heure} {self.sujet} {self.emplacement}"
+        return f"{self.heure} {self.sujet} {self.emplacement} \n"

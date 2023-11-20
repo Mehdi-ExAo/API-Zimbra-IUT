@@ -39,7 +39,7 @@ class Jour:
        Returns:
            str: Une chaîne représentant les détails du jour et de ses cours.
        """
-        Aafficher = f"======= {self.libelle} {self.numJour} ======="
+        Aafficher = f"======= {self.libelle} {self.numJour} ======= \n"
         for cours in self.Cours:
             Aafficher+= str(cours)
             

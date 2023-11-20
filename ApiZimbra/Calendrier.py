@@ -1,11 +1,11 @@
 class Calendrier:
     def __init__(self, semaines):
-        self.semains = semaines
+        self.semaines = semaines
         
-    def GetSemaine(numSemaine):
+    def GetSemaine(self, numSemaine):
         return self.semaines[numSemaine]
     
-    def GetAllSemaines():
+    def GetAllSemaines(self):
         return self.semaines
     
     def __str__(self):

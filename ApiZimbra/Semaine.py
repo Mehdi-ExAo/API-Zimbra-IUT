@@ -23,7 +23,7 @@ class Semaine:
         return self.jours
     
     def __str__(self):
-        semaine_str = f"Semaine {self.num_semaine}\n"
+        semaine_str = f"Semaine {self.num_semaine} \n"
         for jour in self.jours:
             semaine_str += str(jour) + "\n"
         return semaine_str
