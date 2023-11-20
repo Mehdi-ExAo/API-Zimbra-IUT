@@ -5,6 +5,7 @@ from Cours import Cours
 from Jour import Jour
 from Semaine import Semaine
 from Calendrier import Calendrier
+from Magnigier import Magnifier
 
 class Connexion:    
     def __init__(self, login, password, mailAdress):
@@ -89,14 +90,3 @@ class Connexion:
 
         return Calendrier(semaine)
     
-    
-    
-    
-    
-
-    
-    
-    
-    
-    
-
