@@ -30,5 +30,6 @@ class Magnifier:
             
         return cour
     
-    
-    
+    @classmethod
+    def AddToMagnifiedClass(cls, original, magnified):
+        cls.MagnifiedClass[original] = magnified
