@@ -1,14 +1,14 @@
 from Cours import *
 
 class Jour:
-    def __init__(self, Cours : List[Cour], libelle: str, numJour: int):
+    def __init__(self, Cours, libelle: str, numJour: int):
         
         self.Cours = Cours
         self.libelle = libelle
         self.numJour = numJour
         
     
-    def GetCours(self) -> List[Cour]:
+    def GetCours(self):
         """
         Récupère la liste des cours pour la journée.
 

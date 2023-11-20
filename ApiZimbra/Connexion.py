@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 from datetime import datetime, timedelta
 from Cours import Cours
+from Jour import Jour
 
 class Connexion:    
     def __init__(self, login, password, mailAdress):
@@ -40,38 +41,56 @@ class Connexion:
         response = requests.get(calendar_url, auth=(self.login, self.password), cookies={'JSESSIONID': jsessionid_main, 'ZM_TEST': 'true','ZM_AUTH_TOKEN': zm_auth_token}, allow_redirects=False)
         
         soup = BeautifulSoup(response.text, 'html.parser')
-        zh_app_content_elements = soup.find_all(class_='zo_cal_listi')
+        
+        
+        zh_app_content_elements = soup.find_all('div', class_='zo_cal_mlist')
+        
         
         liste_cours = []
+        caledrier = []
         
         jours_semaine = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"]
-        heure_cours_precedent = datetime.strptime("00:00", "%H:%M").time()
         
         index_jour_actuel = 0
         
-        for element in soup.find_all(class_='zo_cal_listi'):
-            heure_cours_str = element.find(class_='zo_cal_listi_time').text.strip()
-            sujet_cours = element.find(class_='zo_cal_listi_subject').text.strip()
-            emplacement_cours = element.find(class_='zo_cal_listi_location').text.strip()
         
-            heure_cours = datetime.strptime(heure_cours_str, '%H:%M').time()
-        
-            if heure_cours < heure_cours_precedent: 
-                index_jour_actuel += 1
-        
+        for day in zh_app_content_elements:
             if index_jour_actuel == 5:
                 index_jour_actuel = 0
-        
-        
-            jour_cours = jours_semaine[index_jour_actuel]
             
-            heure_cours_precedent = heure_cours
-        
-            info_cours = Cours(emplacement_cours, sujet_cours, heure_cours)
-        
-            liste_cours.append(info_cours)
-        
-        return liste_cours
+            liste_cours = []
+                
+            events = day.find_all('div', class_='zo_cal_listi')
+                
+            
+            for element in events:
+                heure_cours_str = element.find(class_='zo_cal_listi_time').text.strip()
+                sujet_cours = element.find(class_='zo_cal_listi_subject').text.strip()
+                emplacement_cours = element.find(class_='zo_cal_listi_location').text.strip()
+            
+                liste_cours.append(Cours(emplacement_cours, sujet_cours, heure_cours_str)) 
+
+
+            jour = Jour(liste_cours, jours_semaine[index_jour_actuel], index_jour_actuel)
+            caledrier.append(jour)
+            index_jour_actuel += 1
+
+        return caledrier
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
 
