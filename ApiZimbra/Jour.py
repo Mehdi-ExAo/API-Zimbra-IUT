@@ -1,11 +1,9 @@
 from Cours import *
 
 class Jour:
-    def __init__(self, Cours, libelle: str, numJour: int):
+    def __init__(self, Cours):
         
         self.Cours = Cours
-        self.libelle = libelle
-        self.numJour = numJour
         
     
     def GetCours(self):
@@ -27,7 +25,7 @@ class Jour:
        Returns:
            Cour or None: Le cours trouvé ou None si aucun cours n'est trouvé.
        """
-        for cours in self.cours:
+        for cours in self.Cours:
             if cours.heure == heure:
                 return cours
         return None
@@ -39,7 +37,7 @@ class Jour:
        Returns:
            str: Une chaîne représentant les détails du jour et de ses cours.
        """
-        Aafficher = f"======= {self.libelle} {self.numJour} ======= \n"
+        Aafficher = f"======= {self.libelle} ======= \n"
         for cours in self.Cours:
             Aafficher+= str(cours)
             

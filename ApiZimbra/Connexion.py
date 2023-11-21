@@ -3,8 +3,6 @@ from bs4 import BeautifulSoup
 from datetime import datetime, timedelta
 from Cours import Cours
 from Jour import Jour
-from Semaine import Semaine
-from Calendrier import Calendrier
 from Magnigier import Magnifier
 
 class Connexion:    
@@ -35,58 +33,33 @@ class Connexion:
         response = requests.get(self.url, auth=(self.login, self.password), cookies={}, allow_redirects=False)
         return response.cookies.get('ZM_AUTH_TOKEN')
 
-    def getCalendar(self):
+    def getCalendar(self, date):
         jsessionid_main = self.getJsessionID()
         zm_auth_token = self.getAuthToken()
         
-        calendar_url = f'{self.zimbra_server}/zimbra/m/zmain;jsessionid={jsessionid_main}?ajax=true&st=cal'
-
+        calendar_url = f'{self.zimbra_server}/zimbra/m/zmain?st=cal&view=month&date={date}'
+        
         response = requests.get(calendar_url, auth=(self.login, self.password), cookies={'JSESSIONID': jsessionid_main, 'ZM_TEST': 'true','ZM_AUTH_TOKEN': zm_auth_token}, allow_redirects=False)
         
         soup = BeautifulSoup(response.text, 'html.parser')
         
-        
-        zh_app_content_elements = soup.find_all('div', class_='zo_cal_mlist')
+        zh_app_content_elements = soup.find_all('div', id="list"+str(date)) 
         
         
         liste_cours = []
-        jours = []
-        semaine = []
+
         
-        jours_semaine = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"]
-        
-        index_jour_actuel = 0
-        index_semaine = 0
-        
-        
-        for day in zh_app_content_elements:
-            if index_jour_actuel == 5:
-                index_jour_actuel = 0
+        for element in zh_app_content_elements:
+            divs_zo_cal_listi = element.find_all('div', class_='zo_cal_listi')
             
-            liste_cours = []
+            for cour in divs_zo_cal_listi:  
+                heure_cours_str = cour.find(class_='zo_cal_listi_time').text.strip()
+                sujet_cours = cour.find(class_='zo_cal_listi_subject').text.strip()
+                emplacement_cours = cour.find(class_='zo_cal_listi_location').text.strip()
                 
-            events = day.find_all('div', class_='zo_cal_listi')
-                
-            
-            for element in events:
-                heure_cours_str = element.find(class_='zo_cal_listi_time').text.strip()
-                sujet_cours = element.find(class_='zo_cal_listi_subject').text.strip()
-                emplacement_cours = element.find(class_='zo_cal_listi_location').text.strip()
-            
-                liste_cours.append(Cours(emplacement_cours, sujet_cours, heure_cours_str)) 
-
-
-            jour = Jour(liste_cours, jours_semaine[index_jour_actuel], index_jour_actuel)
-            jours.append(jour)
-            
-            if index_jour_actuel == 4:
-                semaine.append(Semaine(index_semaine, jours))
-                jours = []
-                index_semaine += 1
-            
-            index_jour_actuel += 1
-
+                liste_cours.append(Cours(emplacement_cours, sujet_cours, heure_cours_str))
                 
 
-        return Calendrier(semaine)
+        return Jour(liste_cours)
     
+  

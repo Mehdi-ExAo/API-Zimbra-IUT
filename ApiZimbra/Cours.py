@@ -1,5 +1,5 @@
 class Cours:
-    def __init__(self, emplacement: str, sujet: str, heure: float):
+    def __init__(self, emplacement: str, sujet: str, heure: str):
         """
         Constructeur de la classe Cours.
 
