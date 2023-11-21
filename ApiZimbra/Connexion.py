@@ -33,7 +33,7 @@ class Connexion:
         response = requests.get(self.url, auth=(self.login, self.password), cookies={}, allow_redirects=False)
         return response.cookies.get('ZM_AUTH_TOKEN')
 
-    def getCalendar(self, date):
+    def getJour(self, date):
         jsessionid_main = self.getJsessionID()
         zm_auth_token = self.getAuthToken()
         
