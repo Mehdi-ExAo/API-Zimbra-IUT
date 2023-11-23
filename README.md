@@ -7,6 +7,8 @@ En-tout-cas grâce à de la sorcellerie et beaucoup de temps, vous pourrez grâc
 
 Vous vous demandez sûrement pourquoi du Python ? Je n'en ai aucune idée...
 
+**Fonctionne uniquement pour l'IUT de Dijon.**
+
 ## Prérequis
 - Python 3.x
 - Bibliothèque `requests` (à installer avec `pip install requests`)
