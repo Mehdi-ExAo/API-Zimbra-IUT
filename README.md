@@ -35,7 +35,6 @@ for cours in liste_cours:
     print(str(cours))
 
 ```
-Résultat :
 ![alt text](https://i.imgur.com/6qSyWuE.png)
 
 ## Informations
