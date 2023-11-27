@@ -40,9 +40,7 @@ for cours in liste_cours:
 ![alt text](https://i.imgur.com/6qSyWuE.png)
 
 ## Informations
-![alt text](https://i.imgur.com/JWq9e1d.png)
-
-Voici le diagramme des classes, on y retrouve 4 classes :
+On retrouve 4 classes :
 
 - La première classe et le plus important, celle de la **Connexion**. C'est grâce à elle que l'on peut récupérer les cours depuis Zimbra. Elle prend en entrée un login, un mot de passe et une adresse email. Attention, je risque de vous choquer, il s'agit de vos identifiants Zimbra ! Le JsessionID et le AuthToken font partie des cookies nécessaires à la connexion. Bref, ils sont là si besoin. Au moment de getJour, vous aurez en retour un objet Jour. Pour le getJour, le paramètre date est comme suit : 20231123 pour le 23/11/2023.
 
